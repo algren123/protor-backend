@@ -26,6 +26,6 @@ app.use(function(req, res, next) {
     res.status(404).send("Sorry, that route doesn't exist.")
 });
 
-app.listen(PORT, function() {
+app.listen(process.env.PORT || 5000, function() {
     console.log(`Protor is listening on Port ${PORT}`);
 });
