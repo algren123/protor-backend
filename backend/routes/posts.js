@@ -30,7 +30,10 @@ router.route('/addpost').post((req, res) => {
     });
 
     newPost.save()
-        .then(() => res.json('Post added!'))
+        .then(() => {
+            res.json('Post added!');
+            console.log('Post added!');
+        })
         .catch((err) => res.status(400).json('Error ' + err));
 });
 
