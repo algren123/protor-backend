@@ -1,4 +1,5 @@
 const router = require('express').Router();
+let User = require('../models/user.model');
 let Post = require('../models/post.model');
 
 router.route('/').get((req, res) => {
@@ -65,6 +66,13 @@ router.route('/update/:id').post((req, res) => {
                 .then(() => res.json('Post updated'))
                 .catch(err => res.status(400).json('Error: ' + err));
         });
+});
+
+router.route('/users').get((req, res) => {
+    User.find()
+        .then(users => res.json(users))
+        .then(console.log(users))
+        .catch(err => res.status(400).json('Error ' + err));
 })
 
 module.exports = router;

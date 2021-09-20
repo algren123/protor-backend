@@ -17,10 +17,12 @@ db.once('open', () => {
 });
 
 const postsRouter = require('./backend/routes/posts');
+const usersRouter = require('./backend/routes/users');
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.use('/posts', postsRouter);
+app.use('/users', usersRouter);
 
 app.use(function(req, res, next) {
     res.status(404).send("Sorry, that route doesn't exist.")
